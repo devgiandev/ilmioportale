@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8251b1adf2c9d79efe93ae48d86ed57a",
+    "content-hash": "46e5cac0b5ebc389c8fc90611de15f80",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1248,6 +1248,27 @@
             "time": "2017-02-14T16:28:37+00:00"
         },
         {
+            "name": "vendor/metronic",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:devgiandev/metronic.git",
+                "reference": "1881ae4eacb4ab292ad354fcb1ba60ca828fc245"
+            },
+            "type": "project",
+            "license": [
+                "gianluca tuono"
+            ],
+            "authors": [
+                {
+                    "name": "devgiandev",
+                    "email": "devgiandev@gmail.com"
+                }
+            ],
+            "description": "metroni theme build\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Cc theme build",
+            "time": "2020-12-23T15:08:25+00:00"
+        },
+        {
             "name": "webimpress/safe-writer",
             "version": "2.1.0",
             "source": {
@@ -1306,7 +1327,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "vendor/metronic": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
