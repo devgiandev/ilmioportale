@@ -15,7 +15,7 @@
             "url": "git@github.com:devgiandev/metronic.git"
         }
     ],
-    "config" : {
+    "config": {
         "github-oauth": {
             "github.com": "21e15e08ed8ac2d7712d3dac08e495ff788eafb9"
         }
