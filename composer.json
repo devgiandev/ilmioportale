@@ -15,11 +15,6 @@
             "url": "git@github.com:devgiandev/metronic.git"
         }
     ],
-    "config": {
-        "github-oauth": {
-            "github.com": "21e15e08ed8ac2d7712d3dac08e495ff788eafb9"
-        }
-    },
     "require": {
         "php": "^7.3",
         "laminas/laminas-component-installer": "^1.0 || ^2.1",
