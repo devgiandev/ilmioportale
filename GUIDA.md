@@ -16,12 +16,12 @@ Modificare e configurare il Composer.json aggiungendo i repositories degli altri
 ```bash
 "repositories": [
         {
-            "type": "git",
+            "type": "github",
             "url":  "git@github.com:devgiandev/metronic.git"
         }
     ],
     "require": {
-        "vendor/metronic": "dev-master"
+       "metronic/metronic": "dev-master"
     },
 ```
 #4) CONFIGURAZIONE COMPOSER-PLUGIN METRONIC
@@ -32,10 +32,10 @@ composer init
 E configurare il composer.json in questo modo: 
 ```bash
 {
-    "name": "vendor/metronic",
-    "description": "metronic theme build",
-    "type": "composer-plugin",
-    "license": "gianluca tuono",
+    "name": "metronic/metronic",
+    "description": "theme",
+    "type": "library",
+    "license": "Gianluca Tuono",
     "authors": [
         {
             "name": "devgiandev",
@@ -44,4 +44,5 @@ E configurare il composer.json in questo modo:
     ],
     "require": {}
 }
+
 ```
