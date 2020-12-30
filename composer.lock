@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7618d1f9f69d4397056619c8ae66dcc5",
+    "content-hash": "6c09b7d0b02f48a015c20bb1c357cde6",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1158,6 +1158,37 @@
             "time": "2020-09-14T14:29:05+00:00"
         },
         {
+            "name": "metronic/metronic",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/devgiandev/metronic.git",
+                "reference": "e6e4502979e549317770cbc2cac92c7c421381c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/devgiandev/metronic/zipball/e6e4502979e549317770cbc2cac92c7c421381c9",
+                "reference": "e6e4502979e549317770cbc2cac92c7c421381c9",
+                "shasum": ""
+            },
+            "type": "library",
+            "license": [
+                "Gianluca Tuono"
+            ],
+            "authors": [
+                {
+                    "name": "devgiandev",
+                    "email": "devgiandev@gmail.com"
+                }
+            ],
+            "description": "theme",
+            "support": {
+                "source": "https://github.com/devgiandev/metronic/tree/master",
+                "issues": "https://github.com/devgiandev/metronic/issues"
+            },
+            "time": "2020-12-30T10:31:15+00:00"
+        },
+        {
             "name": "nikic/php-parser",
             "version": "v4.10.4",
             "source": {
@@ -1259,27 +1290,6 @@
             "time": "2020-10-13T07:07:53+00:00"
         },
         {
-            "name": "vendor/metronic",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:devgiandev/metronic.git",
-                "reference": "a071804d2d6685bceacd41942cae1cb80d774d16"
-            },
-            "type": "vendor-metronic",
-            "license": [
-                "gianluca tuono"
-            ],
-            "authors": [
-                {
-                    "name": "devgiandev",
-                    "email": "devgiandev@gmail.com"
-                }
-            ],
-            "description": "metroni theme",
-            "time": "2020-12-23T22:15:57+00:00"
-        },
-        {
             "name": "webimpress/safe-writer",
             "version": "dev-develop",
             "source": {
@@ -1339,7 +1349,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "vendor/metronic": 20
+        "metronic/metronic": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
