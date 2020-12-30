@@ -11,7 +11,7 @@ composer create-project -sdev laminas/laminas-mvc-skeleton ilmioportale
 Su PhpStorm cliccare su git e share project on gitHUB 
 
 #3) MODIFICARE IL COMPOSER.JSON
-Modificare e configurare il Composer.json aggiungendo i repositories degli altri progetti git privati
+Modificare e configurare il Composer.json aggiungendo i repositories degli altri progetti git
 
 ```bash
 "repositories": [
