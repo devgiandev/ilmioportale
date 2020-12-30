@@ -1163,12 +1163,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/devgiandev/metronic.git",
-                "reference": "e6e4502979e549317770cbc2cac92c7c421381c9"
+                "reference": "d67a1bed064b72e131bac40001ae9ea1e120e511"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/devgiandev/metronic/zipball/e6e4502979e549317770cbc2cac92c7c421381c9",
-                "reference": "e6e4502979e549317770cbc2cac92c7c421381c9",
+                "url": "https://api.github.com/repos/devgiandev/metronic/zipball/d67a1bed064b72e131bac40001ae9ea1e120e511",
+                "reference": "d67a1bed064b72e131bac40001ae9ea1e120e511",
                 "shasum": ""
             },
             "type": "library",
@@ -1186,7 +1186,7 @@
                 "source": "https://github.com/devgiandev/metronic/tree/master",
                 "issues": "https://github.com/devgiandev/metronic/issues"
             },
-            "time": "2020-12-30T10:31:15+00:00"
+            "time": "2020-12-30T11:52:26+00:00"
         },
         {
             "name": "nikic/php-parser",
