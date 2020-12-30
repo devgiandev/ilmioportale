@@ -1,6 +1,7 @@
 {
     "name": "laminas/laminas-mvc-skeleton",
     "description": "Laminas MVC Skeleton Application",
+    "minimum-stability": "dev",
     "type": "project",
     "license": "BSD-3-Clause",
     "keywords": [
@@ -19,8 +20,7 @@
         "php": "^7.3",
         "laminas/laminas-component-installer": "^1.0 || ^2.1",
         "laminas/laminas-development-mode": "^3.2",
-        "laminas/laminas-mvc": "^3.1.1",
-        "metronic/theme": "dev-master"
+        "laminas/laminas-mvc": "^3.1.1"
     },
     "autoload": {
         "psr-4": {
