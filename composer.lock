@@ -1016,12 +1016,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-view.git",
-                "reference": "2a7882c3ccda3663d3da36ed0dd9ba136ae33524"
+                "reference": "c39cd8bc5d69ff0b0e1ac55ec6755737f343f570"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-view/zipball/2a7882c3ccda3663d3da36ed0dd9ba136ae33524",
-                "reference": "2a7882c3ccda3663d3da36ed0dd9ba136ae33524",
+                "url": "https://api.github.com/repos/laminas/laminas-view/zipball/c39cd8bc5d69ff0b0e1ac55ec6755737f343f570",
+                "reference": "c39cd8bc5d69ff0b0e1ac55ec6755737f343f570",
                 "shasum": ""
             },
             "require": {
@@ -1031,6 +1031,9 @@
                 "laminas/laminas-stdlib": "^3.2.1",
                 "laminas/laminas-zendframework-bridge": "^1.0",
                 "php": "^7.3 || ~8.0.0"
+            },
+            "conflict": {
+                "laminas/laminas-servicemanager": "<3.3"
             },
             "replace": {
                 "zendframework/zend-view": "^2.11.4"
@@ -1054,7 +1057,7 @@
                 "laminas/laminas-permissions-acl": "^2.6",
                 "laminas/laminas-router": "^3.0.1",
                 "laminas/laminas-serializer": "^2.6.1",
-                "laminas/laminas-servicemanager": "^3.0.3",
+                "laminas/laminas-servicemanager": "^3.3",
                 "laminas/laminas-session": "^2.8.1",
                 "laminas/laminas-uri": "^2.5",
                 "phpspec/prophecy": "^1.12",
@@ -1101,7 +1104,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2020-12-15T20:45:24+00:00"
+            "time": "2021-01-01T14:07:55+00:00"
         },
         {
             "name": "laminas/laminas-zendframework-bridge",
