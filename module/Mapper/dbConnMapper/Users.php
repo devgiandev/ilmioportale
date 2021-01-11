@@ -84,18 +84,18 @@ class Users extends Connection
                 $row['password'] ;
                 $this->dateFormatCreated_at($rowCreated_at, $format);
                 $rows[] = $row;
-            }
-            switch ($dataType){
-                case 'id' :
-                    return $row['id'];
-                case 'username' :
-                    return $row['username'] ;
-                case 'password' :
-                    return $row['password'];
-                case 'created_at' :
-                    return  $this->dateFormatCreated_at($rowCreated_at, $format);
-                default :
-                    return $rows;
+                switch ($dataType){
+                    case 'id' :
+                        return $row['id'];
+                    case 'username' :
+                        return $row['username'] ;
+                    case 'password' :
+                        return $row['password'];
+                    case 'created_at' :
+                        return  $this->dateFormatCreated_at($rowCreated_at, $format);
+                    default :
+                        return $rows;
+                }
             }
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
