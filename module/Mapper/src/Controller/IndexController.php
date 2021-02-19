@@ -14,7 +14,7 @@ class IndexController extends AbstractActionController
         return new ViewModel();
     }
 
-    public function addAction(): ViewModel
+    public function gestionaleAction(): ViewModel
     {
         return new ViewModel();
     }

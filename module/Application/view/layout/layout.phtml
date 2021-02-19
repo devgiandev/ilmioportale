@@ -2,9 +2,6 @@
 /**
  * @var Laminas\View\Renderer\PhpRenderer $this
  */
-/*$config = include __DIR__ . '/../../../Mapper/common/config.php';
-include __DIR__ . '/../../../Mapper/dbConnMapper/Users.php';
-$users = new \Mapper\Users($config);*/
 ?>
 <?= $this->doctype() ?>
 <html lang="en">
@@ -284,15 +281,15 @@ $users = new \Mapper\Users($config);*/
                         <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
                             <!--begin::Header Nav-->
                             <ul class="menu-nav">
-                                <li class="menu-item menu-item-open menu-item-here menu-item-rel menu-item-open menu-item-here menu-item-active">
+                                <li class="menu-item menu-item-open menu-item-rel" aria-haspopup="true">
                                     <a href="<?= $this->url('home')?>" class="menu-link">
                                         <span class="menu-text">Home</span>
                                         <i class="menu-arrow"></i>
                                     </a>
                                 </li>
-                                <li class="menu-item menu-item-open menu-item-rel">
-                                    <a href="<?= $this->url('indexcontroller')?>" class="menu-link">
-                                        <span class="menu-text">Gestioale</span>
+                                <li class="menu-item menu-item-open menu-item-rel" aria-haspopup="true">
+                                    <a href="<?= $this->url('gestionale')?>" class="menu-link">
+                                        <span class="menu-text">Gestionale</span>
                                         <i class="menu-arrow"></i>
                                     </a>
                                 </li>

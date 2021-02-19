@@ -25,20 +25,20 @@ return [
                 'type'    => Segment::class,
                 'options' => [
                     //la rotta da impostare è custom
-                    'route'    => '/indexcontroller',
+                    'route'    => '/gestionale',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action'     => 'index',
                     ],
                 ],
             ],
-            'addcontroller' => [
+            'gestionale' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/addcontroller',
+                    'route'    => '/gestionale',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
-                        'action'     => 'add',
+                        'action'     => 'gestionale',
                     ],
                 ],
             ],

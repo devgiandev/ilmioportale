@@ -1,8 +1,9 @@
 <?php
 
-
 namespace Mapper;
-include __DIR__ . '/../../Mapper/abstracts/Connection.php';
+
+include_once __DIR__ . '/../../Mapper/abstracts/Connection.php';
+include_once __DIR__ . '/../../Mapper/Models/UsersModel.php';
 
 use DateTime;
 use PDO;
@@ -11,12 +12,18 @@ use PDOException;
 class Users extends Connection
 {
     /**
+     * @var UsersModel
+     */
+    private $usersModel;
+
+    /**
      * @var PDO
      */
     private $conn;
 
-    private const SELECT = 'SELECT * from users';
-    private const FIND = ' SELECT * FROM users where id = :id ';
+    private const SELECT = 'SELECT * FROM USERS';
+    private const FIND = ' SELECT * FROM USERS WHERE ID = :id ';
+
     /**
      * Users constructor.
      * @param $config
@@ -24,19 +31,7 @@ class Users extends Connection
     public function __construct($config)
     {
         $this->conn = parent::__construct($config);
-    }
-
-
-    public function fetchAll()
-    {
-        try {
-            $stmt = $this->conn->prepare(self::SELECT);
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-        return TRUE;
+        $this->usersModel = new UsersModel();
     }
 
     /**
@@ -47,9 +42,21 @@ class Users extends Connection
     {
         try {
             $stmt = $this->conn->prepare(self::FIND);
-            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+        return TRUE;
+    }
+
+    public function fetchAll()
+    {
+        try {
+            $stmt = $this->conn->prepare(self::SELECT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
@@ -68,7 +75,32 @@ class Users extends Connection
         return TRUE;
     }
 
-    public function dataUsers($dataType, $idUsers)
+    public function fetchAllViewLayout()
+    {
+        try {
+            $result = $this->fetchAll();
+            $rows = [];
+            foreach ($result as $row) {
+                $format = 'd-m-Y';
+                $rowCreated_at = $row[$this->usersModel->getCreatedAt()];
+                echo "<tr>";
+                echo "<td>" . strtoupper($row[$this->usersModel->getId()]) . "</td>";
+                echo "<td>" . strtoupper($row[$this->usersModel->getUsername()]) . "</td>";
+                echo "<td>" . strtoupper($row[$this->usersModel->getPassword()]) . "</td>";
+                echo "<td>" . strtoupper($this->dateFormatCreated_at($rowCreated_at, $format)) . "</td>";
+                echo "</tr>";
+                $rows[] = $row;
+            }
+            return $rows;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+        return TRUE;
+    }
+
+    //Permette di selezionare o la riga intera dell'id interessato oppure un record specifico dell'id selezionato
+    //dataType è facoltativo
+    public function dataUsers( $idUsers, $dataType = [])
     {
         try {
             $stmt = $this->conn->prepare(self::FIND);
@@ -77,62 +109,27 @@ class Users extends Connection
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $rows = [];
             foreach ($result as $row) {
-                $format = 'd-m-Y';
-                $rowCreated_at = $row['created_at'];
-                $row['id'];
-                $row['username'] ;
-                $row['password'] ;
-                $this->dateFormatCreated_at($rowCreated_at, $format);
-                $rows[] = $row;
-                switch ($dataType){
-                    case 'id' :
-                        return $row['id'];
-                    case 'username' :
-                        return $row['username'] ;
-                    case 'password' :
-                        return $row['password'];
-                    case 'created_at' :
-                        return  $this->dateFormatCreated_at($rowCreated_at, $format);
-                    default :
-                        return $rows;
-                }
+                    $format = 'd-m-Y';
+                    $rowCreated_at = $row[$this->usersModel->getCreatedAt()];
+                    $rows = $row;
+                    switch ($dataType) {
+                        case $this->usersModel->getId() :
+                            return strtoupper($row[$this->usersModel->getId()]);
+                        case $this->usersModel->getUsername() :
+                            return strtoupper($row[$this->usersModel->getUsername()]);
+                        case $this->usersModel->getPassword() :
+                            return strtoupper($row[$this->usersModel->getPassword()]);
+                        case $this->usersModel->getCreatedAt() :
+                            return strtoupper($this->dateFormatCreated_at($rowCreated_at, $format));
+                        default :
+                            return
+                            '<td>' . strtoupper($row[$this->usersModel->getId()]) . '</td>' .
+                            '<td>' . strtoupper($row[$this->usersModel->getUsername()]) . '</td>' .
+                            '<td>' . strtoupper($row[$this->usersModel->getPassword()]) . '</td>' .
+                            '<td>' . strtoupper($this->dateFormatCreated_at($rowCreated_at, $format)) . '</td>';
+                        /*return json_encode($rows);*/
+                    }
             }
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-        return TRUE;
-    }
-    /**
-     * @return array|bool
-     */
-    public function fetchAllView()
-    {
-        try {
-            $stmt = $this->conn->prepare(self::SELECT);
-            $stmt->execute();
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $rows = [];
-            echo "<div class='container-fluid' style='padding-top: 50px'>";
-            echo "<table class=\"table table-striped\" style='background: #fff'>";
-            echo "<tr>";
-            echo "<th>ID ACCOUNT</th>";
-            echo "<th>USERNAME</th>";
-            echo "<th>PASSWORD</th>";
-            echo "<th>DATA CREAZIONE ACCOUNT</th>";
-            echo "</tr>";
-            foreach ($result as $row) {
-                $format = 'd-m-Y';
-                $rowCreated_at = $row['created_at'];
-                echo "<tr>";
-                echo "<td>" . $row['id'] . "</td>";
-                echo "<td>" . $row['username'] . "</td>";
-                echo "<td>" . $row['password'] . "</td>";
-                echo "<td>" . $this->dateFormatCreated_at($rowCreated_at, $format) . "</td>";
-                echo "</tr>";
-                echo "</div>";
-                $rows[] = $row;
-            }
-            return $rows;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }

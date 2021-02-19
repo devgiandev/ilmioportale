@@ -1,0 +1,237 @@
+<?php
+
+include_once __DIR__ . '/../../../../Mapper/dbConnController/UsersController.php';
+include_once __DIR__ . '/../../../../Mapper/dbConnController/VehiclesController.php';
+
+$controllerUsers = new \Mapper\UsersController();
+$controllerVehicles = new  \Mapper\VehiclesController();
+
+$controllerVehicles->insert();
+$controllerVehicles->update();
+$controllerVehicles->elimina();
+
+?>
+<!--####################INSERISCI UN NUOVO VEICOLO########################-->
+<div class="card card-custom gutter-b">
+    <div class="card-header">
+        <h3 class="card-title text-primary"><strong>INSERISCI UN NUOVO VEICOLO</strong></h3>
+        <div class="card-toolbar">
+            <div class="example-tools justify-content-center">
+                <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
+                    <i class="ki ki-close icon-xs text-muted"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--begin::Form-->
+    <form class="form" method="post" action="/gestionale">
+        <div class="card-body">
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <label>Classe autoveicolo :</label>
+                    <div class="radio-inline">
+                        <label class="radio radio-solid">
+                            <input type="radio" name="classe" checked="checked" value="Autoveicolo" required/>
+                            <span></span>
+                            Autoveicolo
+                        </label>
+                        <label class="radio radio-solid">
+                            <input type="radio" name="classe" value="Motoveicolo"/>
+                            <span></span>
+                            Motoveicolo
+                        </label>
+                    </div>
+                    <span class="form-text text-muted">Perfavore seleziona la classe del tuo veicolo</span>
+                </div>
+                <div class="col-lg-6">
+                    <label>Numero di Targa :</label>
+                    <input type="text" class="form-control" placeholder="inserisci la targa" name="targa" required/>
+                    <span class="form-text text-muted">Perfavore inserisci il numero di targa</span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <label>Modello veicolo :</label>
+                    <input type="text" class="form-control" placeholder="inserisci il modello" name="modello" required/>
+                    <span class="form-text text-muted">Perfavore inserisci il modello</span>
+                </div>
+                <div class="col-lg-6">
+                    <label>Data Scadenza Assicurazione :</label>
+                    <input class="form-control" type="date" value="yyyy-MM-dd" name="scad_assicurazione" required>
+                    <span class="form-text text-muted">Perfavore inserisci la data di scadenza dell'assicurazione</span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <label>Data Scadenza Bollo :</label>
+                    <input class="form-control" type="date" value="yyyy-MM-dd" name="scad_bollo" required>
+                    <span class="form-text text-muted">Perfavore inserisci la data di scadenza del bollo</span>
+                </div>
+                <div class="col-lg-6">
+                    <label>Data Scadenza Revisione :</label>
+                    <input class="form-control" type="date" value="yyyy-MM-dd" name="scad_revisione" required>
+                    <span class="form-text text-muted">Perfavore inserisci la data di scadenza della revisione</span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <label>Chilometri Ultima Revisione :</label>
+                    <input type="text" class="form-control" placeholder="inserisci il numero di chilometri"
+                           name="km_ult_revisione"/>
+                    <span class="form-text text-muted">Perfavore inserisci il chilometraggio dell'ultima revisione</span>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-lg-6">
+                    <button type="submit" class="btn btn-primary mr-2" name="submitInserimentoNuovoVeicolo">Inserisci
+                    </button>
+                    <button type="reset" class="btn btn-danger">Annulla</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--end::Form-->
+</div>
+<!--####################MODIFICA DATI DI UN VEICOLO ESISTENTE########################-->
+<div class="card card-custom gutter-b">
+    <div class="card-header">
+        <h3 class="card-title text-primary"><strong>MODIFICA DATI DI UN VEICOLO ESISTENTE</strong></h3>
+        <div class="card-toolbar">
+            <div class="example-tools justify-content-center">
+                <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
+                    <i class="ki ki-close icon-xs text-muted"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--begin::Form-->
+    <form class="form" method="post" action="/gestionale">
+        <div class="card-body">
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="idVehicles">Seleziona l'<strong class="text-primary"> ID </strong> del veicolo da
+                            modificare
+                            <span class="text-danger">*</span></label>
+                        <select class="form-control" name="id" id="idVehicles">
+                            <option value="seleziona" selected>seleziona</option>
+                            <?php
+                            $controllerVehicles->fetchAllId()
+                            ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <label>Classe autoveicolo :</label>
+                    <div class="radio-inline">
+                        <label class="radio radio-solid">
+                            <input type="radio" name="classe" checked="checked" value="Autoveicolo"/>
+                            <span></span>
+                            Autoveicolo
+                        </label>
+                        <label class="radio radio-solid">
+                            <input type="radio" name="classe" value="Motoveicolo"/>
+                            <span></span>
+                            Motoveicolo
+                        </label>
+                    </div>
+                    <span class="form-text text-muted">Perfavore seleziona la classe del tuo veicolo</span>
+                </div>
+                <div class="col-lg-6">
+                    <label>Numero di Targa :</label>
+                    <input type="text" class="form-control" placeholder="inserisci la targa" name="targa"/>
+                    <span class="form-text text-muted">Perfavore inserisci il numero di targa</span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <label>Modello veicolo :</label>
+                    <input type="text" class="form-control" placeholder="inserisci il modello" name="modello"/>
+                    <span class="form-text text-muted">Perfavore inserisci il modello</span>
+                </div>
+                <div class="col-lg-6">
+                    <label>Data Scadenza Assicurazione :</label>
+                    <input class="form-control" type="date" value="yyyy-MM-dd" name="scad_assicurazione">
+                    <span class="form-text text-muted">Perfavore inserisci la data di scadenza dell'assicurazione</span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <label>Data Scadenza Bollo :</label>
+                    <input class="form-control" type="date" value="yyyy-MM-dd" name="scad_bollo">
+                    <span class="form-text text-muted">Perfavore inserisci la data di scadenza del bollo</span>
+                </div>
+                <div class="col-lg-6">
+                    <label>Data Scadenza Revisione :</label>
+                    <input class="form-control" type="date" value="yyyy-MM-dd" name="scad_revisione">
+                    <span class="form-text text-muted">Perfavore inserisci la data di scadenza della revisione</span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <label>Chilometri Ultima Revisione :</label>
+                    <input type="text" class="form-control" placeholder="inserisci il numero di chilometri"
+                           name="km_ult_revisione"/>
+                    <span class="form-text text-muted">Perfavore inserisci il chilometraggio dell'ultima revisione</span>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-lg-6">
+                    <button type="submit" class="btn btn-primary mr-2" name="submitModificaVeicolo">Modifica</button>
+                    <button type="reset" class="btn btn-danger">Annulla</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--end::Form-->
+</div>
+
+
+<!--####################ELIMINA UN VEICOLO ESISTENTE########################-->
+<div class="card card-custom gutter-b">
+    <div class="card-header">
+        <h3 class="card-title text-primary"><strong>ELIMINA UN VEICOLO ESISTENTE</strong></h3>
+        <div class="card-toolbar">
+            <div class="example-tools justify-content-center">
+                <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
+                    <i class="ki ki-close icon-xs text-muted"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--begin::Form-->
+    <form class="form" method="post" action="/gestionale">
+        <div class="card-body">
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="idVehicles">Seleziona l'<strong class="text-primary"> ID </strong> del veicolo da
+                            modificare
+                            <span class="text-danger">*</span></label>
+                        <select class="form-control" name="id" id="idVehicles">
+                            <option value="seleziona" selected>seleziona</option>
+                            <?php
+                            $controllerVehicles->fetchAllId()
+                            ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-lg-6">
+                    <button type="submit" class="btn btn-primary mr-2" name="submitEliminaVeicolo">Elimina</button>
+                    <button type="reset" class="btn btn-danger">Annulla</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--end::Form-->
+</div>

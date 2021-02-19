@@ -2,9 +2,12 @@
 /**
  * @var Laminas\View\Renderer\PhpRenderer $this
  */
-include  __DIR__ . '/../../../../Mapper/dbConnController/UsersController.php';
-$controllerUsers = new \Mapper\UsersController();
 
-$controllerUsers->layoutFindChoce();
-?>
+include_once __DIR__ . '/../../../../Mapper/dbConnController/VehiclesController.php';
+
+$controllerVehicles = new \Mapper\VehiclesController();
+
+$controllerVehicles->fetchAllViewTable();
+
+
 
